@@ -1,0 +1,11 @@
+.online {
+  background-color: green;
+}
+
+.offline {
+  background-color: red;
+}
+
+div {
+  background-color: red;
+}

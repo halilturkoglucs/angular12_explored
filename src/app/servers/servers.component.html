@@ -1,0 +1,19 @@
+<button class="btn btn-primary"
+        [disabled]="!allowNewServer"
+        (click)="onChangeStatus(buttonAddServer)"
+        #buttonAddServer>Add Server
+</button>
+<input type="text" class="form-control" (input)="onUpdateServerName($event)" #contentInput>
+<div *ngIf="status == 'Status Changed'; else initialStatus">
+  <input type="text" class="form-control" [(ngModel)]="name">
+  <p> {{ 'Name ' + name + ' with status ' + status + ' with last confirmed id ' + lastConfirmedId}}</p>
+</div>
+<ng-template #initialStatus>Initial Status..</ng-template>
+<app-server *ngFor="let server of servers; let i = index"
+            [ngStyle]="{backgroundColor: determineBackgroundColor(i), color: 'blue'}"
+            [i]="i"
+            (aConfirmed)="onAdditionConfirmed($event)"
+            [show]="serverAdded"
+>
+  <p #parentParagh>Content from parent</p>
+</app-server>

@@ -1,0 +1,12 @@
+<div style="background-color: turquoise">
+  <p [ngStyle]="{backgroundColor: getDirectStyleColor()}" >The {{ 3 + '-Server' }} with Id {{ serverId }} with status {{ getServerStatus() }}</p>
+  <p [ngClass]="getColor()">The {{ 3 + '-Server' }} with Id {{ serverId }} with status {{ getServerStatus() }} with index {{ index }}</p>
+  <p [ngClass]="getColor2()">The {{ 3 + '-Server' }} with Id {{ serverId }} with status {{ getServerStatus() }}</p>
+  <p *ngIf="show">A server has been added</p>
+  <div>
+    <ng-content></ng-content>
+  </div>
+
+  <p *appUnless="!show">It's shown now!</p>
+  <a *ngIf="showRedirect" [routerLink]="['/servers', 15]">Redirect to Server 15</a>
+</div>
