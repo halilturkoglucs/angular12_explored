@@ -12,7 +12,12 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.router.navigate(['/servers'], {relativeTo: this.route});
+    this.router.navigate(['/servers'], {
+      relativeTo: this.route,
+      queryParams: {redirectedFrom: '/home'},
+      fragment: 'abc',
+      queryParamsHandling: 'merge'
+    });
   }
 
 }

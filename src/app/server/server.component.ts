@@ -4,13 +4,14 @@ import {
   ContentChild,
   EventEmitter,
   Input,
-  OnChanges,
+  OnChanges, OnDestroy,
   OnInit,
   Output,
   SimpleChanges
 } from "@angular/core";
 import { LoggingService } from "../logging.service";
 import {ActivatedRoute, Params} from "@angular/router";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-server',
@@ -19,10 +20,11 @@ import {ActivatedRoute, Params} from "@angular/router";
   // encapsulation: ViewEncapsulation.ShadowDom,
   providers: []
 })
-export class ServerComponent implements OnInit, AfterContentInit, OnChanges {
+export class ServerComponent implements OnInit, AfterContentInit, OnChanges, OnDestroy {
   serverId: number = 10;
   serverStatus = 'Offline';
   showRedirect = false;
+  loggingSubscription: Subscription;
   @Input() show = false;
 
   @Input('i') index: number;
@@ -38,6 +40,10 @@ export class ServerComponent implements OnInit, AfterContentInit, OnChanges {
   // ngOnDestroy
 
   constructor(private loggingService : LoggingService, private route: ActivatedRoute) {
+
+  }
+
+  ngOnInit(): void {
     this.serverStatus = Math.random() >= 0.5 ? 'Online' : 'Offline';
     this.loggingService.logAdded.subscribe(
       (log: string) => console.log("LogAdded Event Received: " + log)
@@ -46,15 +52,16 @@ export class ServerComponent implements OnInit, AfterContentInit, OnChanges {
     setTimeout(() => {
       this.additionConfirmed.emit(this.index);
     }, 1000);
-  }
 
-  ngOnInit(): void {
     var idFromPath = this.route.snapshot.params['id'];
     if (idFromPath) {
       this.serverId = idFromPath;
       this.showRedirect = true;
     }
-    this.route.params.subscribe((params: Params) => {
+  }
+
+  ngAfterContentInit(): void {
+    this.loggingSubscription = this.route.params.subscribe((params: Params) => {
       this.serverId = params['id'];
     });
 
@@ -62,12 +69,12 @@ export class ServerComponent implements OnInit, AfterContentInit, OnChanges {
     this.loggingService.logAdded.emit(this.parentParagh);
   }
 
-  ngAfterContentInit(): void {
-    this.loggingService.logToConsole("bb" + this.parentParagh);
-  }
-
   ngOnChanges(changes: SimpleChanges): void {
     console.log(changes);
+  }
+
+  ngOnDestroy() {
+    this.loggingSubscription.unsubscribe();
   }
 
   getServerStatus() {
