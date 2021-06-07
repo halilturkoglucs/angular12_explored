@@ -66,7 +66,7 @@ export class ServerComponent implements OnInit, AfterContentInit, OnChanges, OnD
     });
 
     this.loggingService.logToConsole("bb" + this.parentParagh);
-    this.loggingService.logAdded.emit(this.parentParagh);
+    this.loggingService.logAdded.next(this.parentParagh);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
