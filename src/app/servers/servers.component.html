@@ -9,7 +9,7 @@
   <p> {{ 'Name ' + name + ' with status ' + status + ' with last confirmed id ' + lastConfirmedId}}</p>
 </div>
 <ng-template #initialStatus>Initial Status..</ng-template>
-<app-server *ngFor="let server of servers; let i = index"
+<app-server *ngFor="let server of servers | serverFilter:'FilteredServer':'name'; let i = index"
             [ngStyle]="{backgroundColor: determineBackgroundColor(i), color: 'blue'}"
             [i]="i"
             (aConfirmed)="onAdditionConfirmed($event)"

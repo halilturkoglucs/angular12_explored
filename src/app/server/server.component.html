@@ -1,10 +1,11 @@
 <div style="background-color: turquoise">
   <p [ngStyle]="{backgroundColor: getDirectStyleColor()}">The {{ 3 + '-Server' }} with Id {{ serverId }} with
-    status {{ getServerStatus() }}</p>
+    status {{ getServerStatus() | uppercase | shorten: 7:'Default Online Status' }}</p>
   <p [ngClass]="getColor()">The {{ 3 + '-Server' }} with Id {{ serverId }} with status {{ getServerStatus() }} with
     index {{ index }}</p>
   <p [ngClass]="getColor2()">The {{ 3 + '-Server' }} with Id {{ serverId }} with status {{ getServerStatus() }}</p>
-  <p *ngIf="show">A server has been added</p>
+  <p>Async status got at: {{ asyncTime | async}}</p>
+  <p *ngIf="show">A server has been added at {{ date | date: 'fullDate' | uppercase}}</p>
   <div>
     <ng-content></ng-content>
   </div>

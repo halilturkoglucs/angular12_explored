@@ -11,7 +11,7 @@ import {
 } from "@angular/core";
 import { LoggingService } from "../logging.service";
 import {ActivatedRoute, Params} from "@angular/router";
-import {Subscription} from "rxjs";
+import {Observable, Subscription} from "rxjs";
 
 @Component({
   selector: 'app-server',
@@ -26,6 +26,8 @@ export class ServerComponent implements OnInit, AfterContentInit, OnChanges, OnD
   showRedirect = false;
   loggingSubscription: Subscription;
   @Input() show = false;
+  date = new Date();
+  asyncTime: Promise<Date>;
 
   @Input('i') index: number;
   @Output('aConfirmed') additionConfirmed = new EventEmitter();
@@ -58,6 +60,12 @@ export class ServerComponent implements OnInit, AfterContentInit, OnChanges, OnD
       this.serverId = idFromPath;
       this.showRedirect = true;
     }
+
+    this.asyncTime = new Promise<Date>((resolve, reject) => {
+      setTimeout(() => {
+        resolve(new Date());
+      }, 2000);
+    });
   }
 
   ngAfterContentInit(): void {

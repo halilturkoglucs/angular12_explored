@@ -13,10 +13,12 @@ import {ServerSpecsComponent} from "./server-specs/server-specs.component";
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {AppRoutingModule} from "./app-routing.module";
 import {LoginComponent} from './login/login.component';
-import { LogoutComponent } from './logout/logout.component';
+import {LogoutComponent} from './logout/logout.component';
 import {PageNotFoundResolver} from "./page-not-found/page-not-found-resolver.service";
 import {UserFormComponent} from "./user-form/user-form.component";
-import { UserFormReactiveComponent } from './user-form-reactive/user-form-reactive.component';
+import {UserFormReactiveComponent} from './user-form-reactive/user-form-reactive.component';
+import {ShortenPipe} from "./shorten.pipe";
+import {ServerFilterPipe} from "./serverfilter.pipe";
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { UserFormReactiveComponent } from './user-form-reactive/user-form-reacti
     LoginComponent,
     LogoutComponent,
     UserFormComponent,
-    UserFormReactiveComponent
+    UserFormReactiveComponent,
+    ShortenPipe,
+    ServerFilterPipe
   ],
   imports: [
     BrowserModule,
