@@ -15,6 +15,7 @@ import {AppRoutingModule} from "./app-routing.module";
 import {LoginComponent} from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import {PageNotFoundResolver} from "./page-not-found/page-not-found-resolver.service";
+import {UserFormComponent} from "./user-form/user-form.component";
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {PageNotFoundResolver} from "./page-not-found/page-not-found-resolver.ser
     UnlessDirective,
     PageNotFoundComponent,
     LoginComponent,
-    LogoutComponent
+    LogoutComponent,
+    UserFormComponent
   ],
   imports: [
     BrowserModule,

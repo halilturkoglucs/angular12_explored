@@ -9,6 +9,7 @@ import {AuthGuard} from "./auth-guard.service";
 import {LoginComponent} from "./login/login.component";
 import {LogoutComponent} from "./logout/logout.component";
 import {PageNotFoundResolver} from "./page-not-found/page-not-found-resolver.service";
+import {UserFormComponent} from "./user-form/user-form.component";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -18,6 +19,7 @@ const appRoutes: Routes = [
       {path: 'specs', component: ServerSpecsComponent}
     ]
   },
+  {path: 'user-form', component: UserFormComponent},
   {path: 'login', component: LoginComponent},
   {path: 'logout', component: LogoutComponent},
   {path: 'not-found', component: PageNotFoundComponent, data: {message: 'Page not found!'}, resolve: {resolverMsg: PageNotFoundResolver}},
