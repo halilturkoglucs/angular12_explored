@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 
 import {AppComponent} from './app.component';
@@ -16,6 +16,7 @@ import {LoginComponent} from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import {PageNotFoundResolver} from "./page-not-found/page-not-found-resolver.service";
 import {UserFormComponent} from "./user-form/user-form.component";
+import { UserFormReactiveComponent } from './user-form-reactive/user-form-reactive.component';
 
 @NgModule({
   declarations: [
@@ -29,11 +30,13 @@ import {UserFormComponent} from "./user-form/user-form.component";
     PageNotFoundComponent,
     LoginComponent,
     LogoutComponent,
-    UserFormComponent
+    UserFormComponent,
+    UserFormReactiveComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule
   ],
