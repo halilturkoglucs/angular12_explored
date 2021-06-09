@@ -11,6 +11,7 @@ import {LogoutComponent} from "./logout/logout.component";
 import {PageNotFoundResolver} from "./page-not-found/page-not-found-resolver.service";
 import {UserFormComponent} from "./user-form/user-form.component";
 import {UserFormReactiveComponent} from "./user-form-reactive/user-form-reactive.component";
+import {DataFormComponent} from "./data-form/data-form.component";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -22,6 +23,7 @@ const appRoutes: Routes = [
   },
   {path: 'user-form', component: UserFormComponent},
   {path: 'user-form-reactive', component: UserFormReactiveComponent},
+  {path: 'data-form', component: DataFormComponent},
   {path: 'login', component: LoginComponent},
   {path: 'logout', component: LogoutComponent},
   {path: 'not-found', component: PageNotFoundComponent, data: {message: 'Page not found!'}, resolve: {resolverMsg: PageNotFoundResolver}},

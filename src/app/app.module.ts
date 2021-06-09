@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 
 import {AppComponent} from './app.component';
 import {ServerComponent} from "./server/server.component";
@@ -19,6 +19,9 @@ import {UserFormComponent} from "./user-form/user-form.component";
 import {UserFormReactiveComponent} from './user-form-reactive/user-form-reactive.component';
 import {ShortenPipe} from "./shorten.pipe";
 import {ServerFilterPipe} from "./serverfilter.pipe";
+import { DataFormComponent } from './data-form/data-form.component';
+import {AuthInterceptorService} from "./auth-interceptor.service";
+import {AuthLoggingInterceptorService} from "./auth-logging-interceptor.service";
 
 @NgModule({
   declarations: [
@@ -35,7 +38,8 @@ import {ServerFilterPipe} from "./serverfilter.pipe";
     UserFormComponent,
     UserFormReactiveComponent,
     ShortenPipe,
-    ServerFilterPipe
+    ServerFilterPipe,
+    DataFormComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +48,10 @@ import {ServerFilterPipe} from "./serverfilter.pipe";
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [PageNotFoundResolver],
+  providers: [PageNotFoundResolver,
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: AuthLoggingInterceptorService, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
