@@ -3,15 +3,15 @@ import {HttpClient, HttpEventType, HttpHeaders, HttpParams} from "@angular/commo
 import {catchError, map, tap} from "rxjs/operators";
 import {Injectable} from "@angular/core";
 import {Subject} from "rxjs";
+import {environment} from "../../environments/environment";
 
 @Injectable()
 export class PostsService {
 
   id = Math.random();
+  urlBase = environment.postsUrlBase;
 
   error = new Subject<string>();
-
-  urlBase = 'https://ng-complete-guide-7bb3d-default-rtdb.firebaseio.com';
 
   constructor(private http: HttpClient) {
   }
