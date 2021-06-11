@@ -61,4 +61,8 @@ export class ServersComponent implements OnInit {
     this.lastConfirmedId = event;
     console.log(this.lastConfirmedId);
   }
+
+  onAlertBoxClose() {
+    this.status = 'Alert Box Closed';
+  }
 }

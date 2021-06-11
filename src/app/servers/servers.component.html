@@ -4,7 +4,9 @@
         #buttonAddServer>Add Server
 </button>
 <input type="text" class="form-control" (input)="onUpdateServerName($event)" #contentInput>
-<div *ngIf="status == 'Status Changed'; else initialStatus">
+<p>Default filter is: FilteredServer, other servers added will not be shown below!</p>
+<app-alert-box *ngIf="status == 'Status Changed'" [message]="status" (close)="onAlertBoxClose()"></app-alert-box>
+<div *ngIf="status == 'Alert Box Closed'; else initialStatus">
   <input type="text" class="form-control" [(ngModel)]="name">
   <p> {{ 'Name ' + name + ' with status ' + status + ' with last confirmed id ' + lastConfirmedId}}</p>
 </div>

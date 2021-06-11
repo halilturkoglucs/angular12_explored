@@ -22,6 +22,7 @@ import {ServerFilterPipe} from "./serverfilter.pipe";
 import { DataFormComponent } from './data-form/data-form.component';
 import {AuthInterceptorService} from "./auth-interceptor.service";
 import {AuthLoggingInterceptorService} from "./auth-logging-interceptor.service";
+import { AlertBoxComponent } from './alert-box/alert-box.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import {AuthLoggingInterceptorService} from "./auth-logging-interceptor.service"
     UserFormReactiveComponent,
     ShortenPipe,
     ServerFilterPipe,
-    DataFormComponent
+    DataFormComponent,
+    AlertBoxComponent
   ],
   imports: [
     BrowserModule,
