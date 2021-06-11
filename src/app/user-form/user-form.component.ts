@@ -1,4 +1,4 @@
-import {Component, ElementRef, ViewChild} from "@angular/core";
+import {Component, ViewChild} from "@angular/core";
 import {NgForm, NgModelGroup} from "@angular/forms";
 
 @Component({
@@ -17,6 +17,7 @@ export class UserFormComponent {
   genders = ['female', 'male'];
 
   constructor() {
+
   }
 
   suggestUsername() {

@@ -1,8 +1,7 @@
 import {Injectable} from "@angular/core";
-import {HttpEvent, HttpEventType, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse} from "@angular/common/http";
+import {HttpEvent, HttpEventType, HttpHandler, HttpInterceptor, HttpRequest} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
-import {DataFormPost} from "./data-form/data-form-post.model";
 
 @Injectable()
 export class AuthInterceptorService implements HttpInterceptor {

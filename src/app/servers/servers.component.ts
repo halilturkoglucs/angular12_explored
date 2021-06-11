@@ -1,4 +1,4 @@
-import {AfterContentInit, Component, ContentChild, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {LoggingService} from "../logging.service";
 import {ServersService} from "../servers.service";
 
@@ -17,13 +17,13 @@ export class ServersComponent implements OnInit {
   name = '';
   status = 'loading';
   allowNewServer = false;
-  servers: {name: string}[] = [];
+  servers: { name: string }[] = [];
   lastConfirmedId: number;
   serverAdded = false;
   @ViewChild('contentInput') contentInput;
 
-  constructor(private loggingService : LoggingService,
-              private serversService : ServersService) {
+  constructor(private loggingService: LoggingService,
+              private serversService: ServersService) {
     setTimeout(() => {
       this.allowNewServer = true;
 

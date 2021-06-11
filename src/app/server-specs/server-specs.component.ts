@@ -11,5 +11,6 @@ export class ServerSpecsComponent {
   specs = [{spec: 'Spec1', desc: 'Description1'}, {spec: 'Spec2', desc: 'Description2'}];
 
   constructor() {
+    console.log("hehe")
   }
 }

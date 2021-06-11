@@ -31,6 +31,7 @@ export class ServerComponent implements OnInit, AfterContentInit, OnChanges, OnD
 
   @Input('i') index: number;
   @Output('aConfirmed') additionConfirmed = new EventEmitter();
+
   @ContentChild('parentParagh') parentParagh;
 
   // constructor -> ngOnInit -> ngAfterViewInit
@@ -55,7 +56,7 @@ export class ServerComponent implements OnInit, AfterContentInit, OnChanges, OnD
       this.additionConfirmed.emit(this.index);
     }, 1000);
 
-    var idFromPath = this.route.snapshot.params['id'];
+    let idFromPath = this.route.snapshot.params['id'];
     if (idFromPath) {
       this.serverId = idFromPath;
       this.showRedirect = true;

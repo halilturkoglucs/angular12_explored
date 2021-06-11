@@ -19,6 +19,7 @@ export class DataFormComponent implements OnInit, OnDestroy {
   private errorSub: Subscription;
 
   constructor(private http: HttpClient, private postsService: PostsService) {
+    console.log("a: " + postsService.id); // a new instance everytime since we provide it at component-level
   }
 
   ngOnInit() {

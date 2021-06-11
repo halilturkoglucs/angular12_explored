@@ -7,6 +7,8 @@ import {Subject} from "rxjs";
 @Injectable()
 export class PostsService {
 
+  id = Math.random();
+
   error = new Subject<string>();
 
   urlBase = 'https://ng-complete-guide-7bb3d-default-rtdb.firebaseio.com';

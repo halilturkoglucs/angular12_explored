@@ -4,6 +4,7 @@ import {Injectable} from "@angular/core";
   providedIn: 'root'
 })
 export class AuthService {
+  id = Math.random(); // to detect how many instances are loaded by the App module
   loggedIn = false;
 
   isAuthenticated() {

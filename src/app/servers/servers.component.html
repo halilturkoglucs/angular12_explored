@@ -9,6 +9,7 @@
 <div *ngIf="status == 'Alert Box Closed'; else initialStatus">
   <input type="text" class="form-control" [(ngModel)]="name">
   <p> {{ 'Name ' + name + ' with status ' + status + ' with last confirmed id ' + lastConfirmedId}}</p>
+  <p> Server Details of <a [routerLink]="['5']" queryParamsHandling="preserve">server 5</a></p>
 </div>
 <ng-template #initialStatus>Initial Status..</ng-template>
 <app-server *ngFor="let server of servers | serverFilter:'FilteredServer':'name'; let i = index"
