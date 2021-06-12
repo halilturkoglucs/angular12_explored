@@ -1,0 +1,29 @@
+<h4>Shopping List</h4>
+<hr>
+<div>
+  <input type="text" class="form-control" #shoppingItem>
+  <button class="btn btn-primary"
+          (click)="onAddShoppingItem()"
+  >Add Item
+  </button>
+
+  <button class="btn btn-primary"
+          (click)="onDeleteShoppingItems()"
+  >Delete All
+  </button>
+</div>
+<div>
+  <p>Shopping List Name:</p>
+  <input type="text" class="form-control" #shoppingListNameInput>
+  <button class="btn btn-primary"
+          (click)="onSetShoppingListName(shoppingListNameInput)"
+  >Save
+  </button>
+</div>
+<div>
+  <p>{{ name | async }}</p>
+  <div *ngFor="let shoppingItem of (items | async); let i = index">
+    - {{ i + " : " + shoppingItem }}
+  </div>
+</div>
+

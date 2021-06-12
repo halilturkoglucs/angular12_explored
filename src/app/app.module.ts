@@ -5,7 +5,6 @@ import {AppComponent} from './app.component';
 import {HighlightBackgroundDirective} from './highlight-background/highlight-background.directive';
 import {HomeComponent} from "./home/home.component";
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
-import {ServersModule} from "./servers/servers.module";
 import {LoginComponent} from './login/login.component';
 import {LogoutComponent} from './logout/logout.component';
 import {PageNotFoundResolver} from "./page-not-found/page-not-found-resolver.service";
@@ -18,6 +17,9 @@ import {SharedModule} from "./shared.module";
 import {PageNotFoundRoutingModule} from "./page-not-found/page-not-found-routing.module";
 import {BrowserModule} from "@angular/platform-browser";
 import {AppRoutingModule} from "./app-routing.module";
+import {StoreModule} from "@ngrx/store";
+import {environment} from "../environments/environment";
+import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 
 @NgModule({
   declarations: [
@@ -32,6 +34,12 @@ import {AppRoutingModule} from "./app-routing.module";
     DataFormComponent
   ],
   imports: [
+    StoreModule.forRoot({}),
+    // Instrumentation must be imported after importing StoreModule (config is optional)
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      // logOnly: environment.production, // Restrict extension to log-only mode
+    }),
     // ServersModule, # Eager-load -> Switched to lazy-load
     SharedModule,
     BrowserModule,

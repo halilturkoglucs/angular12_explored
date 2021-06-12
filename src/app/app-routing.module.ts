@@ -16,6 +16,10 @@ const appRoutes: Routes = [
     canLoad: [AuthGuard],
     loadChildren: () => import('./servers/servers.module').then(loadedModule => loadedModule.ServersModule)
   },
+  {
+    path: 'shopping',
+    loadChildren: () => import('./shopping/shopping.module').then(loadedModule => loadedModule.ShoppingModule)
+  },
   {path: 'data-form', component: DataFormComponent},
   {path: 'login', component: LoginComponent},
   {path: 'logout', component: LogoutComponent},
