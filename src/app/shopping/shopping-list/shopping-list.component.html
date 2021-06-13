@@ -3,7 +3,8 @@
 <div>
   <input type="text" class="form-control" #shoppingItem>
   <button class="btn btn-primary"
-          (click)="onAddShoppingItem()"
+          [disabled]="(itemBeingAdded | async)"
+          (click)="onAddShoppingItem(shoppingItem)"
   >Add Item
   </button>
 
@@ -22,6 +23,7 @@
 </div>
 <div>
   <p>{{ name | async }}</p>
+  <p *ngIf="itemBeingAdded | async">Item being saved...</p>
   <div *ngFor="let shoppingItem of (items | async); let i = index">
     - {{ i + " : " + shoppingItem }}
   </div>

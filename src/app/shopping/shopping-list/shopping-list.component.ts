@@ -1,8 +1,9 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {Store} from "@ngrx/store";
 import {Observable} from "rxjs";
-import {AddShoppingList, DeleteShoppingList, SetShoppingListName} from "./store/shopping-list.actions";
-import {ShoppingList, ShoppingListModuleState} from "./store/shopping-list.state";
+import {AddShoppingListStart, DeleteShoppingList, SetShoppingListName} from "./store/shopping-list.actions";
+import {ShoppingListModuleState} from "./store/shopping-list.state";
+import {ShoppingListService} from "../shopping-list.service";
 
 @Component({
   selector: 'app-shopping-list',
@@ -11,8 +12,9 @@ import {ShoppingList, ShoppingListModuleState} from "./store/shopping-list.state
 })
 export class ShoppingListComponent implements OnInit {
 
-  items: Observable<string[]>; // unmanaged subscription
-  name: Observable<string>; // unmanaged subscription
+  items: Observable<string[]>; // unmanaged subscription since it and the below come from ngrx
+  name: Observable<string>;
+  itemBeingAdded: Observable<boolean>
 
   @ViewChild('shoppingItem') shoppingItem;
 
@@ -52,10 +54,14 @@ export class ShoppingListComponent implements OnInit {
     //   debugger
     //   console.log(e);
     // });
+
+    this.itemBeingAdded = this.store.select(state => {
+      return state.shoppingList.list.itemBeingAdded;
+    });
   }
 
-  onAddShoppingItem() {
-    let action = new AddShoppingList('New Item');
+  onAddShoppingItem(el) {
+    let action = new AddShoppingListStart(el.value);
     this.store.dispatch(action);
   }
 

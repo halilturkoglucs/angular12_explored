@@ -20,6 +20,7 @@ import {AppRoutingModule} from "./app-routing.module";
 import {StoreModule} from "@ngrx/store";
 import {environment} from "../environments/environment";
 import {StoreDevtoolsModule} from "@ngrx/store-devtools";
+import {EffectsModule} from "@ngrx/effects";
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import {StoreDevtoolsModule} from "@ngrx/store-devtools";
       maxAge: 25, // Retains last 25 states
       // logOnly: environment.production, // Restrict extension to log-only mode
     }),
+    EffectsModule.forRoot(),
     // ServersModule, # Eager-load -> Switched to lazy-load
     SharedModule,
     BrowserModule,

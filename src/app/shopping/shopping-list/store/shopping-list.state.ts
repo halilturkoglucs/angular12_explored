@@ -9,4 +9,5 @@ export interface ShoppingListState {
 export class ShoppingList {
   items: string[];
   name: string;
+  itemBeingAdded: boolean;
 }

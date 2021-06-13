@@ -1,11 +1,19 @@
 import {Action} from "@ngrx/store";
 
-export const ADD_SHOPPING_LIST = 'ADD_SHOPPING_LIST';
+export const ADD_SHOPPING_LIST_ITEM_START = 'ADD_SHOPPING_LIST_ITEM_START';
+export const ADD_SHOPPING_LIST_ITEM_SAVED = 'ADD_SHOPPING_LIST_ITEM_SAVED';
 export const DELETE_SHOPPING_LIST = 'DELETE_SHOPPING_LIST';
 export const SET_SHOPPING_LIST_NAME = 'SET_SHOPPING_LIST_NAME';
 
-export class AddShoppingList implements Action {
-  readonly type = ADD_SHOPPING_LIST;
+export class AddShoppingListStart implements Action {
+  readonly type = ADD_SHOPPING_LIST_ITEM_START;
+
+  constructor(public payload: string) {
+  }
+}
+
+export class AddShoppingListSaved implements Action {
+  readonly type = ADD_SHOPPING_LIST_ITEM_SAVED;
 
   constructor(public payload: string) {
   }
