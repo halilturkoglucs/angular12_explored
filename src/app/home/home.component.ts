@@ -29,26 +29,26 @@ export class HomeComponent implements OnInit, OnDestroy {
     //   this.tick = count;
     // });
 
-    this.intervalSubscription = new Observable((observer: Observer<any>) => {
-      let count = 0;
-      setInterval(() => {
-        observer.next(count++);
-        if (count == 10) observer.complete();
-        if (count > 10) observer.error("Count cannot be greater than 10");
-      }, 1000);
-    }).pipe(map((count: number) => {
-      return count += 2;
-    })).subscribe(count => {
-        this.tick = count;
-        console.log(count);
-      }, error => {
-        console.log(error);
-      }
-    );
+    // this.intervalSubscription = new Observable((observer: Observer<any>) => {
+    //   let count = 0;
+    //   setInterval(() => {
+    //     observer.next(count++);
+    //     if (count == 10) observer.complete();
+    //     if (count > 10) observer.error("Count cannot be greater than 10");
+    //   }, 1000);
+    // }).pipe(map((count: number) => {
+    //   return count + 2;
+    // })).subscribe(count => {
+    //     this.tick = count;
+    //     console.log(count);
+    //   }, error => {
+    //     console.log(error);
+    //   }
+    // );
   }
 
   ngOnDestroy(): void {
-    this.intervalSubscription.unsubscribe();
+    // this.intervalSubscription.unsubscribe();
   }
 
 }

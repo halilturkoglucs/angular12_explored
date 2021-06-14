@@ -44,7 +44,7 @@ import {EffectsModule} from "@ngrx/effects";
     EffectsModule.forRoot(),
     // ServersModule, # Eager-load -> Switched to lazy-load
     SharedModule,
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     PageNotFoundRoutingModule // this should be the last, otherwise it captures '**' not found wildcard for other module's routes
   ],

@@ -10,9 +10,20 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
+## Server-Side Rendering
+
+Add `ng add @nguniversal/express-engine` Universal package
+
+Run `npm run dev:ssr` to start hot-reload SSR
+
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+
+With SSR added:
+Run `ng build && ng run demo01:server`
+
+Then Run `npm run serve:ssr` to test the app in production mode but when you deploy, use another server which can serve prod-grade nodejs.
 
 ## Running unit tests
 
