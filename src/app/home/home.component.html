@@ -1,1 +1,7 @@
 <p>Home tick: {{ tick }}</p>
+<div [@tickAnimation]="state" style="width: 100px; height: 100px;"></div>
+<div [@wildState]="wildState" style="width: 100px; height: 100px;"></div>
+<div [@withVoid]="withVoidState"
+     (@withVoid.start) = "animationLogs($event)"
+     (@withVoid.done) = "animationLogs($event)"
+     style="width: 100px; height: 100px;"></div>

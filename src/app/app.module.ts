@@ -21,6 +21,7 @@ import {StoreModule} from "@ngrx/store";
 import {environment} from "../environments/environment";
 import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 import {EffectsModule} from "@ngrx/effects";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import {EffectsModule} from "@ngrx/effects";
     // ServersModule, # Eager-load -> Switched to lazy-load
     SharedModule,
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    BrowserAnimationsModule,
     AppRoutingModule,
     PageNotFoundRoutingModule // this should be the last, otherwise it captures '**' not found wildcard for other module's routes
   ],
