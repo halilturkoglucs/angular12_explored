@@ -22,6 +22,7 @@ import {environment} from "../environments/environment";
 import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 import {EffectsModule} from "@ngrx/effects";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,13 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     BrowserAnimationsModule,
     AppRoutingModule,
-    PageNotFoundRoutingModule // this should be the last, otherwise it captures '**' not found wildcard for other module's routes
+    PageNotFoundRoutingModule, // this should be the last, otherwise it captures '**' not found wildcard for other module's routes
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [PageNotFoundResolver,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true},

@@ -5,6 +5,7 @@ import {ShoppingListService} from "../../shopping-list.service";
 import {throwError} from "rxjs";
 import {Injectable} from "@angular/core";
 
+// If you need some state change asynch, you can use effects
 @Injectable()
 export class ShoppingListEffects {
 

@@ -3,7 +3,6 @@ import {Store} from "@ngrx/store";
 import {Observable} from "rxjs";
 import {AddShoppingListStart, DeleteShoppingList, SetShoppingListName} from "./store/shopping-list.actions";
 import {ShoppingListModuleState} from "./store/shopping-list.state";
-import {ShoppingListService} from "../shopping-list.service";
 
 @Component({
   selector: 'app-shopping-list',
