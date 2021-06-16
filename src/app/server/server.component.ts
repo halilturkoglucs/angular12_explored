@@ -83,7 +83,7 @@ export class ServerComponent implements OnInit, AfterContentInit, OnChanges, OnD
   }
 
   ngOnDestroy() {
-    this.loggingSubscription.unsubscribe();
+    this.loggingSubscription?.unsubscribe();
   }
 
   getServerStatus() {
